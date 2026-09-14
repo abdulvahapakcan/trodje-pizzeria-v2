@@ -50,11 +50,11 @@ export default function InfoSection() {
             </div>
             <div>
               <span>Lördag</span>
-              <span>12:00 – 22:00</span>
+              <span>11:00 – 22:00</span>
             </div>
             <div>
               <span>Söndag</span>
-              <span>12:00 – 21:00</span>
+              <span>11:00 – 21:00</span>
             </div>
           </div>
         </article>
