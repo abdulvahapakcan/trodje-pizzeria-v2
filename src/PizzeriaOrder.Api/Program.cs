@@ -6,9 +6,18 @@ using PizzeriaOrder.Api.Services.Orders;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Database
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection");
+
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException(
+        "Connection string 'DefaultConnection' is missing.");
+}
+
 builder.Services.AddDbContext<PizzeriaDbContext>(options =>
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
 // Controllers
 builder.Services.AddControllers();
@@ -31,7 +40,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .WithOrigins(
+                "https://trodjepizzeria.com",
+                "https://www.trodjepizzeria.com",
+                "https://trodje-pizzeria.pages.dev",
+                "http://localhost:5173"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
