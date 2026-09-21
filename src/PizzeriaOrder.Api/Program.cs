@@ -44,6 +44,7 @@ builder.Services.AddCors(options =>
                 "https://trodjepizzeria.com",
                 "https://www.trodjepizzeria.com",
                 "https://trodje-pizzeria.pages.dev",
+                "https://trodje-pizzeria-v2.pages.dev",
                 "http://localhost:5173"
             )
             .AllowAnyHeader()
